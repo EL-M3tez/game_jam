@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnnswg468l3ut"]
+[gd_scene load_steps=24 format=3 uid="uid://cnnswg468l3ut"]
 
 [ext_resource type="Script" uid="uid://bsitvvn2hi3qb" path="res://Scripts/Player.gd" id="1_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://b0oqoxp6cwsi2" path="res://assets/monochrome_ninja/monochrome_ninja/idle/00.png" id="2_3v2ag"]
@@ -11,6 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://cpf2b6oxkogiy" path="res://assets/monochrome_ninja/monochrome_ninja/idle/07.png" id="9_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://bm68dorc8vn1p" path="res://assets/monochrome_ninja/monochrome_ninja/idle/08.png" id="10_60mlk"]
 [ext_resource type="Texture2D" uid="uid://dfc4wmyusok7t" path="res://assets/monochrome_ninja/monochrome_ninja/idle/09.png" id="11_i4ail"]
+[ext_resource type="Texture2D" uid="uid://dfxdpfppea1s4" path="res://assets/monochrome_ninja/monochrome_ninja/run/00.png" id="12_i4ail"]
+[ext_resource type="Texture2D" uid="uid://cthjuh83wx7p" path="res://assets/monochrome_ninja/monochrome_ninja/run/01.png" id="13_a38lo"]
+[ext_resource type="Texture2D" uid="uid://ccqwesi2qaeb2" path="res://assets/monochrome_ninja/monochrome_ninja/run/02.png" id="14_4ni07"]
+[ext_resource type="Texture2D" uid="uid://ct0eiy4606b33" path="res://assets/monochrome_ninja/monochrome_ninja/run/03.png" id="15_l71n6"]
+[ext_resource type="Texture2D" uid="uid://cwd0ctvkuih4w" path="res://assets/monochrome_ninja/monochrome_ninja/run/04.png" id="16_ke2ow"]
+[ext_resource type="Texture2D" uid="uid://duq47q5tk0wib" path="res://assets/monochrome_ninja/monochrome_ninja/run/05.png" id="17_ujl30"]
+[ext_resource type="Texture2D" uid="uid://bf7w1m2qjgh7b" path="res://assets/monochrome_ninja/monochrome_ninja/run/06.png" id="18_31cv2"]
+[ext_resource type="Texture2D" uid="uid://chioxurl0nxpw" path="res://assets/monochrome_ninja/monochrome_ninja/run/07.png" id="19_pf23h"]
+[ext_resource type="Texture2D" uid="uid://ul8chsfontxu" path="res://assets/monochrome_ninja/monochrome_ninja/run/08.png" id="20_dt7fs"]
+[ext_resource type="Texture2D" uid="uid://b5t862h1lhyrx" path="res://assets/monochrome_ninja/monochrome_ninja/run/09.png" id="21_wqfne"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a38lo"]
 animations = [{
@@ -48,7 +58,46 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_i4ail")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a38lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ni07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_l71n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ke2ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ujl30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_31cv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_pf23h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dt7fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wqfne")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2wvv"]
+radius = 6.0
+height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_d2wvv")
@@ -56,8 +105,8 @@ metadata/_custom_type_script = "uid://wr1lr0j2fjfh"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a38lo")
-animation = &"Idle"
+animation = &"Run"
 autoplay = "Idle"
-frame_progress = 0.96433383
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_d2wvv")
