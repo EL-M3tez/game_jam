@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cnnswg468l3ut"]
+[gd_scene load_steps=31 format=3 uid="uid://cnnswg468l3ut"]
 
 [ext_resource type="Script" uid="uid://bsitvvn2hi3qb" path="res://Scripts/Player.gd" id="1_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://b0oqoxp6cwsi2" path="res://assets/monochrome_ninja/monochrome_ninja/idle/00.png" id="2_3v2ag"]
@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://chioxurl0nxpw" path="res://assets/monochrome_ninja/monochrome_ninja/run/07.png" id="19_pf23h"]
 [ext_resource type="Texture2D" uid="uid://ul8chsfontxu" path="res://assets/monochrome_ninja/monochrome_ninja/run/08.png" id="20_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://b5t862h1lhyrx" path="res://assets/monochrome_ninja/monochrome_ninja/run/09.png" id="21_wqfne"]
+[ext_resource type="Texture2D" uid="uid://cinqne5brwcs3" path="res://assets/monochrome_ninja/monochrome_ninja/on_wall/0.png" id="27_pf23h"]
+[ext_resource type="Texture2D" uid="uid://dpr63pvtrxw07" path="res://assets/monochrome_ninja/monochrome_ninja/on_wall/1.png" id="28_dt7fs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a38lo"]
 animations = [{
@@ -118,6 +120,17 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_pf23h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_dt7fs")
+}],
+"loop": false,
+"name": &"Wall_slide",
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2wvv"]
@@ -126,12 +139,12 @@ height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_d2wvv")
-SPEED = 100.0
+damage = 20
 metadata/_custom_type_script = "uid://wr1lr0j2fjfh"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a38lo")
-animation = &"Jump"
+animation = &"Wall_slide"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -139,3 +152,9 @@ shape = SubResource("CapsuleShape2D_d2wvv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="Right" type="RayCast2D" parent="."]
+target_position = Vector2(9, 0)
+
+[node name="Left" type="RayCast2D" parent="."]
+target_position = Vector2(-10, 0)
